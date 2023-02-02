@@ -3,7 +3,6 @@ kind: Route
 metadata:
   name: mywebsite
 spec:
-  host: mywebsite-hello-rest.192.168.99.101.nip.io
   port:
     targetPort: 8080-tcp
   to:
