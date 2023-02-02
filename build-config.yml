@@ -1,0 +1,25 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: mywebsite
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: mywebsite
+spec:
+  runPolicy: Serial
+  source:
+      git:
+        ref: main
+        uri: https://github.com/robinhocarvalho/openshift-demo-project
+      type: Git
+  strategy:
+      dockerStrategy:
+      type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: mywebsite:latest
+  triggers:
+    - type: ConfigChange
