@@ -15,7 +15,7 @@ spec:
         from:
           kind: ImageStreamTag
           name: 'mywebsite:latest'
-  replicas: 2
+  replicas: 1
   selector:
     app: mywebsite
   template:
@@ -24,9 +24,27 @@ spec:
         app: mywebsite
     spec:
       containers:
-        - name: mywebsite
+        - env:
+            - name: MONGO-USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: username
+            - name: MONGO-PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: password
+            - name: MONGO-USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: database   
+          name: mywebsite
           image: mywebsite:latest
           ports:
             - containerPort: 8080
               protocol: TCP
           imagePullPolicy: Always
+             
+          

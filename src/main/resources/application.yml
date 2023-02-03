@@ -2,8 +2,8 @@ spring:
  data:
   mongodb:
    authentication-database: mongo
-   port: ${mongo-port}
-   host: ${mongo-host}
+   port: 27017
+   host: mongodb
    username: ${mongo-username}
    password: ${mongo-password}
    database: ${mongo-database}        
