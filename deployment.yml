@@ -29,17 +29,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mongo
-                  key: username
+                  key: mongo-username
             - name: MONGO-PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mongo
-                  key: password
+                  key: mongo-password
             - name: MONGO-USERNAME
               valueFrom:
                 secretKeyRef:
                   name: mongo
-                  key: database   
+                  key: mongo-database  
           name: mywebsite
           image: mywebsite:latest
           ports:
